@@ -26,6 +26,9 @@ namespace QRCodeMaker
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// 生成した画像
+        /// </summary>
         Bitmap bitmap;
 
 
@@ -49,6 +52,9 @@ namespace QRCodeMaker
             saveButton.IsEnabled = false;
         }
 
+        /// <summary>
+        /// QRコードを生成
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var text = textBox1.Text;
@@ -97,6 +103,9 @@ namespace QRCodeMaker
             }
         }
 
+        /// <summary>
+        /// 画像を保存
+        /// </summary>
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             // 画像を生成していないなら何もしない
