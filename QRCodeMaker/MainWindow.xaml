@@ -63,9 +63,8 @@
                 </Grid.RowDefinitions>
                 <Label Content="誤り訂正レベル" Grid.ColumnSpan="2" Panel.ZIndex="-2" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch"/>
                 <Label Content="バージョン" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch"/>
-
-                <Label Content="マスク" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="117,0,0,0" Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch"/>
-                <Label Content="画像関係" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="117,0,0,0" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch"/>
+                <Label Content="マスク" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalContentAlignment="Stretch"/>
+                <Label Content="画像関係" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalContentAlignment="Stretch"/>
                 <Label Content="色[カラーコード]" Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Right" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch"/>
                 <TextBox x:Name="colorTextBox" Grid.Column="2" Grid.Row="4" Text="000000" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" PreviewTextInput="Hexadecimal_PreviewTextInput"/>
                 <ComboBox Grid.Column="2" x:Name="eclComboBox" VerticalAlignment="Center"/>

@@ -45,6 +45,9 @@ namespace QRCodeMaker
             versionComboBox.ItemsSource = Enumerable.Range(QRCode.MinVersion, QRCode.MaxVersion).ToArray();
             versionComboBox.SelectedItem = QRCode.MinVersion;
 
+            maskComboBox.ItemsSource = Enumerable.Range(QRCode.MinMask, QRCode.MaxMask).ToArray();
+            maskComboBox.SelectedItem = QRCode.MinVersion;
+
             shapeComboBox.ItemsSource = Ksnm.Enum.GetValues<QRCode.ModuleShape>();
             shapeComboBox.SelectedItem = QRCode.ModuleShape.Square;
 
@@ -62,11 +65,12 @@ namespace QRCodeMaker
 
             var ecl = (ErrorCorrectionLevel)eclComboBox.SelectedItem;
             var version = (int)versionComboBox.SelectedItem;
+            var mask = (int)maskComboBox.SelectedItem;
             var color = ColorTranslator.FromHtml("#" + colorTextBox.Text);
             var size = int.Parse( sizeTextBox.Text);
             var scale = float.Parse(scaleTextBox.Text) / 100;
             var shape = (QRCode.ModuleShape)shapeComboBox.SelectedItem;
-            var qrCode = QRCode.EncodeBinary(bytes, ecl, version, QRCode.MaxVersion, AutoMask, false);
+            var qrCode = QRCode.EncodeBinary(bytes, ecl, version, QRCode.MaxVersion, mask, false);
 
             bitmap = qrCode.ToImage(shape, size, scale, 1, color);
 
