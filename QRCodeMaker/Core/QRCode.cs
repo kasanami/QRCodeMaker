@@ -392,7 +392,7 @@ namespace QRCodeMaker.Core
 		/// <param name="circleScale">丸のスケール[比率]</param>
 		/// <param name="border">画像の外側の余白[moduleSize]</param>
 		/// <returns></returns>
-		public Bitmap ToImage(ModuleShape moduleShape, int moduleSize, float circleScale, int border,Color color)
+		public Bitmap ToImage(ModuleShape moduleShape, int moduleSize, float circleScale, int border, Color color)
 		{
 			if (moduleSize <= 0 || border < 0)
 			{
@@ -440,17 +440,33 @@ namespace QRCodeMaker.Core
 					{
 						brush = Brushes.White;
 					}
-					// 機能ごとに形状を変更
 					//bool isFunction = IsFunction(xI, yI);
 					var moduleType = GetModuleType(xI, yI);
-					var isFunction = moduleType.Any(ModuleType.FinderPattern,ModuleType.AlignmentPattern);
+
+					// 機能ごとに背景を変更
+					if (false)
+					{
+						Brush bgBrush = Brushes.White;
+						if (moduleType == ModuleType.AlignmentPattern) { }
+						else if (moduleType == ModuleType.Data) { }
+						else if (moduleType == ModuleType.FinderPattern) { }
+						else if (moduleType == ModuleType.Format) { bgBrush = Brushes.Pink; }
+						else if (moduleType == ModuleType.Function) { bgBrush = Brushes.LightGreen; }
+						else if (moduleType == ModuleType.HorizonTimingPattern) { bgBrush = Brushes.LightGray; }
+						else if (moduleType == ModuleType.Version) { bgBrush = Brushes.Blue; }
+						else if (moduleType == ModuleType.VerticalTimingPattern) { bgBrush = Brushes.LightGray; }
+						graphics.FillRectangle(bgBrush, x, y, moduleSize, moduleSize);
+					}
+
+					// 機能ごとに形状を変更
+					var isFunction = moduleType.Any(ModuleType.FinderPattern, ModuleType.AlignmentPattern);
 					if (isFunction)
 					{
 						graphics.FillRectangle(brush, x, y, moduleSize, moduleSize);
 					}
 					else
 					{
-						if(moduleShape == ModuleShape.Square)
+						if (moduleShape == ModuleShape.Square)
 						{
 							graphics.FillRectangle(brush, x + offset, y + offset, scaledSize, scaledSize);
 						}
